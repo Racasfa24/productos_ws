@@ -1,10 +1,14 @@
 package com.ecommerce.back.entities;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,4 +34,6 @@ public class PostresEntity {
     @Column(nullable = false)
     private String descripcion;
 
+    @OneToMany(mappedBy = "postre", fetch = FetchType.LAZY)
+    private Set<CategoriasProductosEntity> categorias;
 }
