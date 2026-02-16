@@ -1,5 +1,6 @@
 package com.ecommerce.back.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -21,11 +22,11 @@ public class CategoriasProductosEntity {
     private Long id_categorias_postres;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_postre")
+    @JoinColumn(name = "id_postre",nullable = false)
     private PostresEntity postre;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "categoria_id")
+    @JoinColumn(name = "id_categoria",nullable = false)
     private CategoriasEntity categoria;
 
 
