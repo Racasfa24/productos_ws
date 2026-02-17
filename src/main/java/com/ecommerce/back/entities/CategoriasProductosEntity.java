@@ -1,6 +1,5 @@
 package com.ecommerce.back.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -9,12 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "categorias_postres", schema = "productos")
-@Getter @Setter
 public class CategoriasProductosEntity {
 
     @Id
@@ -28,6 +24,32 @@ public class CategoriasProductosEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoria",nullable = false)
     private CategoriasEntity categoria;
+
+    public Long getId_categorias_postres() {
+        return id_categorias_postres;
+    }
+
+    public void setId_categorias_postres(Long id_categorias_postres) {
+        this.id_categorias_postres = id_categorias_postres;
+    }
+
+    public PostresEntity getPostre() {
+        return postre;
+    }
+
+    public void setPostre(PostresEntity postre) {
+        this.postre = postre;
+    }
+
+    public CategoriasEntity getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriasEntity categoria) {
+        this.categoria = categoria;
+    }
+
+    
 
 
 }

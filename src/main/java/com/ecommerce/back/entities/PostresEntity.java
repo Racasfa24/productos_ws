@@ -10,12 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity 
 @Table(name = "postres", schema = "productos")
-@Getter @Setter
 public class PostresEntity {
 
     @Id
@@ -36,4 +33,54 @@ public class PostresEntity {
 
     @OneToMany(mappedBy = "postre", fetch = FetchType.LAZY)
     private Set<CategoriasProductosEntity> categorias;
+
+    public Long getId_postre() {
+        return id_postre;
+    }
+
+    public void setId_postre(Long id_postre) {
+        this.id_postre = id_postre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Set<CategoriasProductosEntity> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(Set<CategoriasProductosEntity> categorias) {
+        this.categorias = categorias;
+    }
+
+    
 }
