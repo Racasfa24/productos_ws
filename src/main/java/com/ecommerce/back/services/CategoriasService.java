@@ -9,6 +9,8 @@ import com.ecommerce.back.entities.CategoriasEntity;
 import com.ecommerce.back.mappers.CategoriaMapper;
 import com.ecommerce.back.repositories.CategoriasRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class CategoriasService {
 
@@ -29,6 +31,19 @@ public class CategoriasService {
         
         CategoriasEntity categoriaEn = categoriaMapper.toEntity(categoria);
         categoriasRepository.save(categoriaEn);
+    }
+
+    @Transactional
+    public void editarNombreCategoria(CategoriasDTO categoria){
+
+        CategoriasEntity categoriaEn = categoriasRepository.findById(categoria.getId_categoria()).orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
+        categoriaEn.setNombre(categoria.getNombre());
+    }
+
+    public CategoriasDTO encontrarCategoria(Long id_categoria) {
+
+        CategoriasEntity categoriaEn = categoriasRepository.findById(id_categoria).orElseThrow(() -> new RuntimeException("Categoria no encontrada"));
+        return categoriaMapper.toDto(categoriaEn);
     }
 
 
