@@ -1,5 +1,6 @@
 package com.ecommerce.back.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -23,8 +24,15 @@ public class CategoriasService {
         this.categoriaMapper = categoriaMapper;
     }
 
-    public List<CategoriasEntity> obtenerCategorias() {
-        return categoriasRepository.findAll();
+    public List<CategoriasDTO> obtenerCategorias() {
+
+        List<CategoriasEntity> categoriasEn = categoriasRepository.findAll();
+        List<CategoriasDTO> categoriasDTO = new ArrayList<>();
+        for(CategoriasEntity categoriaEn : categoriasEn){
+            categoriasDTO.add(categoriaMapper.toDto(categoriaEn));
+
+        }
+        return categoriasDTO;
     }
 
     public void guardarCategoria(CategoriasDTO categoria) {

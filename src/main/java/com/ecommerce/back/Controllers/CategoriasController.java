@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.back.DTOS.CategoriasDTO;
-import com.ecommerce.back.entities.CategoriasEntity;
 import com.ecommerce.back.services.CategoriasService;
 
 @RestController
@@ -25,7 +24,7 @@ public class CategoriasController {
     }
 
     @GetMapping("/listar_categorias")
-    public ResponseEntity<List<CategoriasEntity>> obtenerCategorias() {
+    public ResponseEntity<List<CategoriasDTO>> obtenerCategorias() {
 
         return ResponseEntity.ok(categoriasService.obtenerCategorias());
     }
